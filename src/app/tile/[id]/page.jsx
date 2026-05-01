@@ -7,7 +7,7 @@ export default async function TileDetailsPage({ params }) {
   const { id } = await params;
   const tile = await fetchTile(id);
   return (
-    <div className="max-w-[80%] mx-auto mt-7 sm:mt-10">
+    <div className="max-w-[85%] mx-auto mt-7 sm:mt-10">
       <div className="card lg:card-side bg-base-100 shadow-sm">
         <figure>
           <img src={tile.image} alt="tile" className="w-120" />

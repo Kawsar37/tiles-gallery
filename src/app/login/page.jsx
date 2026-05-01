@@ -14,13 +14,38 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 export default function LogInPage() {
   const [isVisible, setIsVisible] = useState(false);
-  const onSubmit = (e) => {
+  const path = usePathname();
+
+  const signIn = async () => {
+    const { data, error } = await authClient.signIn.social({
+      provider: "google",
+    });
+    if (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
     const { email, password } = formData;
+
+    const { data, error } = await authClient.signIn.email({
+      email: email, // required
+      password: password, // required
+      rememberMe: true,
+      callbackURL: path == "/login" ? "/" : path,
+    });
+
+    if (error) {
+      toast(error.message);
+    }
 
     // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
   };
@@ -63,7 +88,7 @@ export default function LogInPage() {
           <Label>Password</Label>
           <InputGroup>
             <InputGroup.Input
-              className="w-full max-w-[280px]"
+              className="w-full max-w-70"
               type={isVisible ? "text" : "password"}
               placeholder="Password"
             />
@@ -103,7 +128,7 @@ export default function LogInPage() {
           </Link>
         </Description>
         <p className="text-center text-sm font-semibold">Or</p>
-        <Button className="w-full" variant="tertiary">
+        <Button className="w-full" variant="tertiary" onClick={signIn}>
           <Icon icon="devicon:google" />
           Sign in with Google
         </Button>

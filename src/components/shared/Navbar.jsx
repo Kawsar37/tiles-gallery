@@ -1,9 +1,13 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import NavLink from "./NavLink";
+import { authClient } from "@/lib/auth-client";
 
 function Navbar() {
+  const { data: session } = authClient.useSession();
+  console.log(session);
   const link = (
     <>
       <li>
@@ -18,7 +22,7 @@ function Navbar() {
     </>
   );
   return (
-    <div className="navbar bg-base-200 shadow-sm sticky top-0 z-10">
+    <div className="navbar bg-base-200 shadow-sm sticky top-0 z-10 px-0 lg:px-10">
       <div className="navbar-start">
         <div className="dropdown z-10">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,6 +47,18 @@ function Navbar() {
             className="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {link}
+            {session && (
+              <li>
+                <button
+                  onClick={async () => {
+                    await authClient.signOut();
+                  }}
+                  className="btn btn-warning rounded-full text-white md:hidden flex"
+                >
+                  Log Out
+                </button>
+              </li>
+            )}
           </ul>
         </div>
         <Image src="/new.svg" alt="logo" height={60} width={60} />
@@ -50,10 +66,37 @@ function Navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{link}</ul>
       </div>
+
       <div className="navbar-end">
-        <Link href={"/login"} className="btn btn-info rounded-full text-white">
-          Log In
-        </Link>
+        {session ? (
+          <>
+            <p className="mr-3 font-semibold">Hello, {session.user.name}</p>
+            <Link href={"/my-profile"}>
+              <img
+                src={session.user.image}
+                height={40}
+                width={40}
+                alt="dp"
+                className="rounded-full mr-3"
+              />
+            </Link>
+            <button
+              onClick={async () => {
+                await authClient.signOut();
+              }}
+              className="btn btn-warning rounded-full text-white md:flex hidden"
+            >
+              Log Out
+            </button>
+          </>
+        ) : (
+          <Link
+            href={"/login"}
+            className="btn btn-info rounded-full text-white"
+          >
+            Log In
+          </Link>
+        )}
       </div>
     </div>
   );

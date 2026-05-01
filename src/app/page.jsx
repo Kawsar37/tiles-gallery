@@ -37,7 +37,7 @@ export default function Home() {
         </Marquee>
       </div>
 
-      <div className=" max-w-[80%] mx-auto">
+      <div className=" max-w-[85%] mx-auto">
         <h1 className="text-4xl text-blue-400 font-semibold text-center">
           Featured Tiles
         </h1>

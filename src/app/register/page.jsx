@@ -12,16 +12,34 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import Link from "next/link";
+
 import React, { useState } from "react";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 export default function RegisterPage() {
   const [isVisible, setIsVisible] = useState(false);
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
     const { name, email, password, image } = formData;
 
+    const { data, error } = await authClient.signUp.email({
+      name: name, // required
+      email: email, // required
+      password: password, // required
+      image: image,
+      callbackURL: "/",
+    });
+
+    console.log(error);
+
+    if (error) {
+      toast.error(error.message);
+    }
+    if (data) {
+      toast.success("Account Created Successfully!");
+    }
     // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
   };
 
@@ -95,7 +113,7 @@ export default function RegisterPage() {
           <Label>Password</Label>
           <InputGroup>
             <InputGroup.Input
-              className="w-full max-w-[280px]"
+              className="w-full max-w-70"
               type={isVisible ? "text" : "password"}
               placeholder="Password"
             />
