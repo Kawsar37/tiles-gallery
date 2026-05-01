@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
-import { authClient } from "./lib/auth-client";
+import { auth } from "./lib/auth";
+import { headers } from "next/headers";
 
 // This function can be marked `async` if using `await` inside
 export async function proxy(request) {
-  const { data: session } = await authClient.getSession();
+  const { session } = await auth.api.getSession({
+    query: {
+      disableCookieCache: true,
+    },
+    headers: await headers(), // headers containing the user's session token
+  });
+  console.log("hello", session);
   if (session) {
     return NextResponse.next();
   }
