@@ -22,7 +22,7 @@ export default function TileCard({ tile }) {
             Price: {tile.price} {tile.currency}
           </p>
 
-          <Link href={"/tile-details"} className="badge badge-outline">
+          <Link href={`tile/${tile.id}`} className="badge badge-outline">
             View Details
           </Link>
         </div>

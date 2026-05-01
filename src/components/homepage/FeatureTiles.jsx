@@ -1,4 +1,4 @@
-import fetchTiles from "@/lib/data";
+import { fetchTiles } from "@/lib/data";
 import React from "react";
 import TileCard from "../shared/TileCard";
 
