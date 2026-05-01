@@ -4,9 +4,11 @@ import Link from "next/link";
 import React from "react";
 import NavLink from "./NavLink";
 import { authClient } from "@/lib/auth-client";
+import Loading from "@/app/loading";
+import { Spinner } from "@heroui/react";
 
 function Navbar() {
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const link = (
     <>
       <li>
@@ -67,7 +69,11 @@ function Navbar() {
       </div>
 
       <div className="navbar-end">
-        {session ? (
+        {isPending ? (
+          <div className="flex flex-col items-center justify-center">
+            <Spinner color="accent" />
+          </div>
+        ) : session ? (
           <>
             <p className="mr-3 font-semibold">
               <span className="font-normal">Hello,</span> {session.user.name}
