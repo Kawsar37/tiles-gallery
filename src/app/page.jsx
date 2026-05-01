@@ -1,11 +1,9 @@
-import Image from "next/image";
+import SwiperBanner from "@/components/homepage/SwiperBanner";
 
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-4xl text-center mt-4 font-bold bg-amber-300 text-black">
-        Hello World
-      </h1>
+    <div className="mt-7 sm:mt-10">
+      <SwiperBanner />
     </div>
   );
 }
