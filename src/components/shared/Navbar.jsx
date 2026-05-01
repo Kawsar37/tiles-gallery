@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import NavLink from "./NavLink";
 import { authClient } from "@/lib/auth-client";
-import Loading from "@/app/loading";
 import { Spinner } from "@heroui/react";
 
 function Navbar() {
@@ -23,7 +22,7 @@ function Navbar() {
     </>
   );
   return (
-    <div className="navbar bg-base-200 shadow-sm sticky top-0 z-10 px-0 lg:px-10">
+    <div className="navbar bg-base-200 shadow-sm sticky top-0 z-10 lg:px-10">
       <div className="navbar-start">
         <div className="dropdown z-10">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -62,7 +61,9 @@ function Navbar() {
             )}
           </ul>
         </div>
-        <Image src="/new.svg" alt="logo" height={60} width={60} />
+        <Link href="/">
+          <Image src="/new.svg" alt="logo" height={60} width={60} />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{link}</ul>
