@@ -30,30 +30,52 @@ export default function SwiperBanner() {
           slideShadows: true,
         }}
         pagination={{ clickable: true }}
-        initialSlide={3}
+        initialSlide={0}
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
+        loop={true}
       >
         <SwiperSlide className="h-75! w-75!">
-          <img src="https://swiperjs.com/demos/images/abstract-1.jpg" />
+          <img src="/tile1.jpg" />
         </SwiperSlide>
         <SwiperSlide className="h-75! w-75!">
-          <img src="https://swiperjs.com/demos/images/abstract-2.jpg" />
+          <img src="/tile2.webp" />
         </SwiperSlide>
         <SwiperSlide className="h-75! w-75!">
-          <img src="https://swiperjs.com/demos/images/abstract-3.jpg" />
+          <img src="/tile3.jpg" />
         </SwiperSlide>
         <SwiperSlide className="h-75! w-75!">
-          <img src="https://swiperjs.com/demos/images/abstract-4.jpg" />
+          <img src="/tile4.png" />
         </SwiperSlide>
         <SwiperSlide className="h-75! w-75!">
-          <img src="https://swiperjs.com/demos/images/abstract-5.jpg" />
+          <img src="/tile5.webp" />
         </SwiperSlide>
         <SwiperSlide className="h-75! w-75!">
-          <img src="https://swiperjs.com/demos/images/abstract-6.jpg" />
+          <img src="/tile6.webp" />
         </SwiperSlide>
         <SwiperSlide className="h-75! w-75!">
-          <img src="https://swiperjs.com/demos/images/abstract-6.jpg" />
+          <img src="/tile3.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className="h-75! w-75!">
+          <img src="/tile4.png" />
+        </SwiperSlide>
+        <SwiperSlide className="h-75! w-75!">
+          <img src="/tile5.webp" />
+        </SwiperSlide>
+        <SwiperSlide className="h-75! w-75!">
+          <img src="/tile1.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className="h-75! w-75!">
+          <img src="/tile2.webp" />
+        </SwiperSlide>
+        <SwiperSlide className="h-75! w-75!">
+          <img src="/tile3.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className="h-75! w-75!">
+          <img src="/tile4.png" />
+        </SwiperSlide>
+        <SwiperSlide className="h-75! w-75!">
+          <img src="/tile5.webp" />
         </SwiperSlide>
       </Swiper>
     </>
