@@ -14,7 +14,7 @@ export default function MyProfile() {
   return (
     <div className="flex flex-col gap-6 items-center mt-20 mb-20 lg:mb-40">
       <div>
-        <img
+        <Image
           height={100}
           width={100}
           alt="dp"

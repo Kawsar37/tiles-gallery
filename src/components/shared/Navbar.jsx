@@ -81,7 +81,7 @@ function Navbar() {
               <span className="font-normal">Hello,</span> {session.user.name}
             </p>
             <Link href={"/my-profile"}>
-              <img
+              <Image
                 src={session?.user?.image}
                 height={40}
                 width={40}
