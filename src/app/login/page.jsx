@@ -122,7 +122,7 @@ export default function LogInPage() {
           </Button>
         </div>
         <Description className="text-center">
-          Don't Have an account ?{" "}
+          Do not Have an account ?{" "}
           <Link className="text-blue-400" href={"/register"}>
             Register Now
           </Link>

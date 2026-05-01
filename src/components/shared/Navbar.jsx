@@ -7,7 +7,6 @@ import { authClient } from "@/lib/auth-client";
 
 function Navbar() {
   const { data: session } = authClient.useSession();
-  console.log(session);
   const link = (
     <>
       <li>
@@ -70,14 +69,16 @@ function Navbar() {
       <div className="navbar-end">
         {session ? (
           <>
-            <p className="mr-3 font-semibold">Hello, {session.user.name}</p>
+            <p className="mr-3 font-semibold">
+              <span className="font-normal">Hello,</span> {session.user.name}
+            </p>
             <Link href={"/my-profile"}>
               <img
                 src={session.user.image}
                 height={40}
                 width={40}
                 alt="dp"
-                className="rounded-full mr-3"
+                className="rounded-full mr-3 h-10 w-10 object-cover"
               />
             </Link>
             <button
