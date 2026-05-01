@@ -5,6 +5,7 @@ import React from "react";
 import NavLink from "./NavLink";
 import { authClient } from "@/lib/auth-client";
 import { Spinner } from "@heroui/react";
+import { router } from "better-auth/api";
 
 function Navbar() {
   const { data: session, isPending } = authClient.useSession();
@@ -81,7 +82,7 @@ function Navbar() {
             </p>
             <Link href={"/my-profile"}>
               <img
-                src={session.user.image}
+                src={session?.user?.image}
                 height={40}
                 width={40}
                 alt="dp"
@@ -90,7 +91,13 @@ function Navbar() {
             </Link>
             <button
               onClick={async () => {
-                await authClient.signOut();
+                await authClient.signOut({
+                  fetchOptions: {
+                    onSuccess: () => {
+                      router.push("/");
+                    },
+                  },
+                });
               }}
               className="btn btn-warning rounded-full text-white md:flex hidden"
             >

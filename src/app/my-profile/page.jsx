@@ -18,7 +18,7 @@ export default function MyProfile() {
           height={100}
           width={100}
           alt="dp"
-          src={session.user.image}
+          src={session?.user?.image}
           className="rounded-full h-50 w-50 object-cover"
         />
       </div>

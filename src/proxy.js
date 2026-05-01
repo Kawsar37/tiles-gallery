@@ -10,7 +10,7 @@ export async function proxy(request) {
     },
     headers: await headers(), // headers containing the user's session token
   });
-  console.log("hello", session);
+  // console.log("hello", session);
   if (session) {
     return NextResponse.next();
   }
