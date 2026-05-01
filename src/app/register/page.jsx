@@ -15,12 +15,12 @@ import {
 import Link from "next/link";
 import React, { useState } from "react";
 
-export default function LogInPage() {
+export default function RegisterPage() {
   const [isVisible, setIsVisible] = useState(false);
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
-    const { email, password } = formData;
+    const { name, email, password, image } = formData;
 
     // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
   };
@@ -31,6 +31,38 @@ export default function LogInPage() {
         className="flex ring-1 ring-slate-200 rounded-lg w-85 sm:w-96 flex-col gap-4 p-4"
         onSubmit={onSubmit}
       >
+        <TextField
+          isRequired
+          name="name"
+          type="text"
+          validate={(value) => {
+            if (!value) {
+              return "Please enter name";
+            }
+            return null;
+          }}
+        >
+          <Label>Name</Label>
+          <Input placeholder="Enter your name" />
+          <FieldError />
+        </TextField>
+
+        <TextField
+          isRequired
+          name="image"
+          type="text"
+          validate={(value) => {
+            if (!value) {
+              return "Please enter image link";
+            }
+            return null;
+          }}
+        >
+          <Label>Image link</Label>
+          <Input placeholder="Enter valid image link" />
+          <FieldError />
+        </TextField>
+
         <TextField
           isRequired
           name="email"
@@ -90,23 +122,12 @@ export default function LogInPage() {
         <div className="flex gap-2">
           <Button type="submit">
             <Check />
-            Log In
+            Register
           </Button>
           <Button type="reset" variant="secondary">
             Reset
           </Button>
         </div>
-        <Description className="text-center">
-          Don't Have an account ?{" "}
-          <Link className="text-blue-400" href={"/register"}>
-            Register Now
-          </Link>
-        </Description>
-        <p className="text-center text-sm font-semibold">Or</p>
-        <Button className="w-full" variant="tertiary">
-          <Icon icon="devicon:google" />
-          Sign in with Google
-        </Button>
       </Form>
     </div>
   );

@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@gravity-ui/uikit": "^7.38.0",
+    "@iconify/react": "^6.0.2",
     "@tailwindcss/postcss": "^4",
     "daisyui": "^5.5.19",
     "eslint": "^9",
