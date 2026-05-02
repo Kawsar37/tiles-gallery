@@ -1,3 +1,40 @@
+# 🧱 Tiles Gallery
+
+## 📌 Purpose
+
+This project was built to implement authentication using Better Auth in a Next.js application. It also serves as a learning project to understand Next.js routing, protected/public routes, and modern UI integration.
+
+## 🌐 Live URL
+
+🔗 https://tiles-gallery-by-kawsar.vercel.app/
+
+## ✨ Key Features
+
+- 🔐 Authentication using Better Auth
+- 🔄 Public and protected routes using Next.js proxy
+- 👤 User profile section with update functionality
+- 📱 Fully mobile responsive design
+
+## 🛠️ Technologies Used
+
+- Next.js
+- Hero UI
+- Daisy UI
+- Better Auth
+- React Toastify
+- Swiper.js
+
+## 📦 NPM Packages
+
+- better-auth
+- react-toastify
+- swiper
+- daisyui
+
+---
+
+> This project is mainly focused on learning and experimenting with modern Next.js features and authentication systems.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
