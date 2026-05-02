@@ -1,6 +1,5 @@
 "use client";
 import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
-import { Icon } from "@iconify/react";
 
 import {
   Button,
@@ -16,6 +15,7 @@ import {
 import React, { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export default function RegisterPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,13 +32,12 @@ export default function RegisterPage() {
       callbackURL: "/",
     });
 
-    console.log(error);
-
     if (error) {
       toast.error(error.message);
     }
     if (data) {
       toast.success("Account Created Successfully!");
+      redirect("/");
     }
     // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
   };

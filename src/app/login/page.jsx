@@ -25,6 +25,8 @@ export default function LogInPage() {
   const signIn = async () => {
     const { data, error } = await authClient.signIn.social({
       provider: "google",
+      rememberMe: true,
+      callbackURL: "/",
     });
     if (error) {
       toast.error(error.message);
